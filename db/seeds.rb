@@ -4,9 +4,9 @@
 # User.create(username: "Test", email: "this@test.com", password: "password")
 
 # tasks = Task.create([{
-#     title: "seed",
-#     description: "description seed",
-#     start_time: "01:00PM",
-#     end_time: "02:00PM",
+#     title: "seed 2",
+#     description: "description seed 2",
+#     start_time: "04:00PM",
+#     end_time: "06:00PM",
 #     user_id: 4
 # }])
