@@ -1,5 +1,5 @@
 class StaticController < ApplicationController
     def index
-        render component: "Home", props: { info: "yo" }
+        render json: { info: "yo" }
     end
 end
