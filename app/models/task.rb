@@ -7,6 +7,7 @@ class Task < ApplicationRecord
     self
   end
 
+  #TODO edit this task
   def total_task_time
     self.start_time.to_datetime - self.end_time.to_datetime
   end
