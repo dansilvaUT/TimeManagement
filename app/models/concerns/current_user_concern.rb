@@ -11,4 +11,14 @@ module CurrentUserConcern
         end
     end
 
+    private
+    
+    def current_user
+        if @current_user
+            render json: { status: 200 }
+        else
+            render json: { status: 401 }
+        end
+    end
+
 end
