@@ -1,0 +1,39 @@
+//Colors
+$blue: #3c91e6;
+$darker-blue: #38608f;
+$light-black: #342e37;
+$green: #a2d729;
+$dark-white: #fafffd;
+$orange: #fa824c;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $light-black;
+  margin: 0;
+  padding: 0;
+}
+
+.Button {
+  text-transform: capitalize;
+}
+
+.Form {
+  min-height: 200px;
+  min-width: 300px;
+}
+
+@mixin flex-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}

@@ -1,0 +1,11 @@
+@import "../../main";
+
+.Landing-container {
+  background-color: $dark-white;
+  min-height: 50vh;
+  border-radius: 10px;
+}
+
+.Landing-form {
+  @include flex-column;
+}
