@@ -3,7 +3,7 @@ import "../../_main.scss";
 import Button from "@mui/material/Button";
 import classNames from "classnames";
 
-const ButtonComp = ({ text, classname, func }) => {
+const ButtonComp = ({ text, classname, func, type }) => {
   return (
     <Button
       className={classNames("Button", {
@@ -11,6 +11,7 @@ const ButtonComp = ({ text, classname, func }) => {
       })}
       variant="outlined"
       onSubmit={func}
+      type={type}
     >
       {text}
     </Button>
