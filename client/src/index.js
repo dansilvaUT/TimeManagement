@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import Dashboard from "./components/Dashboard";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -9,6 +10,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<App />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
