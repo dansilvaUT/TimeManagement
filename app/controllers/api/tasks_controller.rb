@@ -32,6 +32,16 @@ module Api
                 render json: { status: 500, message: "Something went wrong" }
             end
         end
+
+        #Custom methods
+        def get_user_tasks
+            tasks = Task.where(user_id: @current_user.id)
+            if tasks
+                render json: { status: 200, tasks: tasks }
+            else
+                render json: { status: 404, message: "No tasks found" }
+            end
+        end
     
         #Private Methods
         private

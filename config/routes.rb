@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     post :create_task , to: "tasks#create_task"
     delete :destroy, to: "tasks#destroy"
     put :update, to: "tasks#edit"
+    get :get_user_tasks, to: "tasks#get_user_tasks"
     # get '*path', to: 'static#index', via: :all
   end
 end
