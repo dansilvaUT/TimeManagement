@@ -12,6 +12,7 @@ const Input = ({ placeholderText, classname, onchange, value, name, type }) => {
       label={placeholderText}
       variant="outlined"
       type={type}
+      autoComplete="off"
     />
   );
 };
