@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../../context/UserProvider";
 import ButtonComp from "../Button/ButtonComp";
 import Container from "@mui/material/Container";
 import Heading from "../Heading";
@@ -10,6 +11,7 @@ import { landingConstants } from "../../constants";
 import "./Landing.scss";
 
 const Landing = () => {
+  const { setUserData } = useContext(UserContext);
   let navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -40,6 +42,7 @@ const Landing = () => {
         });
       }
       if (response.data.user) {
+        setUserData(response.data.user);
         navigate("/dashboard");
       }
       //TODO: Implment else block
@@ -48,7 +51,6 @@ const Landing = () => {
     }
   };
   //TODO: //Error handling for empty fields
-
   return (
     <Container className="Landing-container" fixed>
       <Heading text="Crunch Time" type="h1" comp="h1" textDirection="center" />
