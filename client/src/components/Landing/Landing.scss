@@ -2,8 +2,13 @@
 
 .Landing-container {
   background-color: $dark-white;
-  min-height: 50vh;
+  min-height: 70vh;
   border-radius: 10px;
+}
+
+.Landing-Text-Container {
+  @include flex-row;
+  justify-content: center;
 }
 
 .Landing-form {
