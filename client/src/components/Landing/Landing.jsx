@@ -7,12 +7,15 @@ import Form from "../Form/Form";
 import Input from "../Input";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Spinner from "../Spinner";
 import { landingConstants } from "../../constants";
 import "./Landing.scss";
 
 const Landing = () => {
   const { setUserData } = useContext(UserContext);
   let navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     email: "",
     username: "",
@@ -28,6 +31,7 @@ const Landing = () => {
     e.preventDefault();
     let response;
     try {
+      setLoading(true);
       if (toggleView) {
         response = await axios.post("/api/registrations", {
           user: {
@@ -42,6 +46,7 @@ const Landing = () => {
         });
       }
       if (response.data.user) {
+        setLoading(false);
         setUserData(response.data.user);
         navigate("/dashboard");
       }
@@ -53,43 +58,65 @@ const Landing = () => {
   //TODO: //Error handling for empty fields
   return (
     <Container className="Landing-container" fixed>
-      <Heading text="Crunch Time" type="h1" comp="h1" textDirection="center" />
-      <Form classname="Landing-form" onSubFunc={handleSubmit}>
-        <Input
-          placeholderText="Email"
-          name="email"
-          value={formData.email}
-          onchange={(e) => handleChange(e)}
-        />
-        {toggleView && (
-          <Input
-            placeholderText="Username"
-            name="username"
-            value={formData.username}
-            onchange={(e) => handleChange(e)}
+      {loading ? (
+        <Spinner display="block" border="#3c91e6" size={100} />
+      ) : (
+        <>
+          <Heading
+            text="Crunch Time"
+            type="h1"
+            comp="h1"
+            textDirection="center"
           />
-        )}
-        <Input
-          placeholderText="Password"
-          name="password"
-          value={formData.password}
-          onchange={(e) => handleChange(e)}
-          type="password"
-        />
-        <Heading
-          text={toggleView ? landingConstants.LOGIN : landingConstants.SIGN_UP}
-          comp="p"
-        />
-        <Heading text="here" comp="p" func={() => setToggleView(!toggleView)} />
-        <ButtonComp
-          text={
-            toggleView
-              ? landingConstants.SIGN_UP_TEXT
-              : landingConstants.LOGIN_TEXT
-          }
-          type="submit"
-        />
-      </Form>
+          <Form classname="Landing-form" onSubFunc={handleSubmit}>
+            <Input
+              placeholderText="Email"
+              name="email"
+              value={formData.email}
+              onchange={(e) => handleChange(e)}
+            />
+            {toggleView && (
+              <Input
+                placeholderText="Username"
+                name="username"
+                value={formData.username}
+                onchange={(e) => handleChange(e)}
+              />
+            )}
+            <Input
+              placeholderText="Password"
+              name="password"
+              value={formData.password}
+              onchange={(e) => handleChange(e)}
+              type="password"
+            />
+            <Container className="Landing-Text-Container">
+              <Heading
+                classname="Landing-Auth-Text"
+                text={
+                  toggleView ? landingConstants.LOGIN : landingConstants.SIGN_UP
+                }
+                comp="p"
+              />
+              <Heading
+                classname="Landing-Auth-Text"
+                text="here"
+                comp="p"
+                func={() => setToggleView(!toggleView)}
+              />
+            </Container>
+
+            <ButtonComp
+              text={
+                toggleView
+                  ? landingConstants.SIGN_UP_TEXT
+                  : landingConstants.LOGIN_TEXT
+              }
+              type="submit"
+            />
+          </Form>
+        </>
+      )}
     </Container>
   );
 };

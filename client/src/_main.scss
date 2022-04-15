@@ -21,8 +21,12 @@ body {
 }
 
 .Form {
-  min-height: 200px;
+  min-height: 300px;
   min-width: 300px;
+}
+
+.Label {
+  width: 40%;
 }
 
 @mixin flex-row {
