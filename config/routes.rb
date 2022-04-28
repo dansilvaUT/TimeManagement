@@ -9,7 +9,6 @@ Rails.application.routes.draw do
     #Auth
     delete :logout, to: "sessions#logout"
     get :logged_in, to: "sessions#logged_in"
-
     #Tasks
     post :create_task , to: "tasks#create_task"
     delete :destroy, to: "tasks#destroy"
