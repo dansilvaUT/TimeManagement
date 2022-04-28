@@ -1,0 +1,18 @@
+@import "../../main";
+
+.Navbar {
+  background-color: $blue;
+  padding: 5px;
+  @include flex-row;
+
+  &-container {
+    width: 300px;
+    @include flex-row;
+  }
+
+  &-link {
+    text-decoration: none;
+    color: $dark-white;
+    font-size: 1.5rem;
+  }
+}
