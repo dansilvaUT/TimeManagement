@@ -6,7 +6,7 @@
   @include flex-row;
 
   &-container {
-    width: 300px;
+    width: 400px;
     @include flex-row;
   }
 
@@ -14,5 +14,17 @@
     text-decoration: none;
     color: $dark-white;
     font-size: 1.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .Logout-btn {
+    color: $dark-white;
+    border-color: $dark-white;
+  }
+
+  .Logout-btn:hover {
+    border-color: $dark-white;
+    background-color: $dark-white;
+    color: $light-black;
   }
 }

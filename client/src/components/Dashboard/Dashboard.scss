@@ -1,0 +1,28 @@
+@import "../../main";
+
+.Dashboard-container {
+  background-color: $darker-blue;
+  min-height: calc(100vh - 82px);
+  @include flex-column;
+  justify-content: flex-start;
+
+  .Dashboard-Table {
+    width: 70%;
+    .Table-Head {
+      background-color: $light-black;
+    }
+
+    .Table-Header {
+      font-size: 20px;
+      font-weight: bold;
+      color: $dark-white;
+    }
+
+    .Table-Row-Data:nth-child(odd) {
+      background-color: $dark-white;
+    }
+    .Table-Row-Data:nth-child(even) {
+      background-color: $light-grey;
+    }
+  }
+}
