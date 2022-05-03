@@ -10,7 +10,7 @@ const ButtonComp = ({ text, classname, func, type }) => {
         [`${classname}`]: classname,
       })}
       variant="outlined"
-      onSubmit={func}
+      onClick={func}
       type={type}
     >
       {text}
