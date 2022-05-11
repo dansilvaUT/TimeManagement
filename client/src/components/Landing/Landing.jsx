@@ -90,7 +90,7 @@ const Landing = () => {
               onchange={(e) => handleChange(e)}
               type="password"
             />
-            <Container className="Landing-Text-Container">
+            <div className="Landing-Text-Container">
               <Heading
                 classname="Landing-Auth-Text"
                 text={
@@ -104,7 +104,7 @@ const Landing = () => {
                 comp="p"
                 func={() => setToggleView(!toggleView)}
               />
-            </Container>
+            </div>
 
             <ButtonComp
               text={

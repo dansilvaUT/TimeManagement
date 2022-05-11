@@ -33,6 +33,17 @@ module Api
             end
         end
 
+        #TODO: Need to filter out users who arren't associated with this task
+        def show_task
+            task = Task.find(params[:id])
+
+            if task
+                render json: { status: 200, task: task }
+            else
+                render  json: { status: 404, message: "No Task Found" }
+            end
+        end
+
         #Custom methods
         def get_user_tasks
             tasks = Task.where(user_id: @current_user.id)
@@ -47,7 +58,7 @@ module Api
         private
     
         def task_params
-            params.require(:task).permit(:title, :description, :start_time, :end_time, :user_id)
+            params.require(:task).permit(:title, :description, :start_time, :end_time, :user_id, :id)
         end
         
     end

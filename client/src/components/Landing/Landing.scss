@@ -7,8 +7,9 @@
 }
 
 .Landing-Text-Container {
+  width: 270px;
   @include flex-row;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .Landing-form {
