@@ -24,5 +24,18 @@
     .Table-Row-Data:nth-child(even) {
       background-color: $light-grey;
     }
+
+    .Dashboard-Button {
+      font-weight: bold;
+      color: $orange;
+      border-color: $orange;
+    }
+
+    .Dashboard-Button:hover {
+      font-weight: bold;
+      color: $dark-white;
+      border-color: $orange;
+      background-color: $orange;
+    }
   }
 }

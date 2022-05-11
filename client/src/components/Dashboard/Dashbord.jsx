@@ -7,11 +7,15 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import ButtonComp from "../Button/ButtonComp";
+import Time from "./Times/Time/Time";
 import axios from "axios";
 import "./Dashboard.scss";
 
 const Dashbord = () => {
   const [tasks, setTasks] = useState([]);
+  const [openModal, setModalOpen] = useState(false);
+  const [task, setTask] = useState({});
 
   useEffect(() => {
     axios
@@ -19,11 +23,16 @@ const Dashbord = () => {
       .then((fetchedTasks) => setTasks(fetchedTasks.data.tasks));
   }, []);
 
+  const modalButton = (taskID) => {
+    setModalOpen(!openModal);
+    setTask(taskID);
+  };
+
   const handleDisplay = () => {
     if (tasks.length > 0) {
       return (
         <TableContainer className="Dashboard-Table">
-          <Table sx={{ minWidth: 700 }} aria-label="customized table">
+          <Table aria-label="customized table">
             <TableHead className="Table-Head">
               <TableRow>
                 <TableCell className="Table-Header" alight="left">
@@ -62,10 +71,15 @@ const Dashbord = () => {
                     {task.end_time}
                   </TableCell>
                   <TableCell className="Table-Data" align="left">
-                    Do MATH HERE
+                    {task.id}
                   </TableCell>
                   <TableCell className="Table-Data" alight="left">
-                    Edit TODO
+                    <ButtonComp
+                      text="Edit"
+                      type="submit"
+                      classname="Dashboard-Button"
+                      func={() => modalButton(task.id)}
+                    />
                   </TableCell>
                 </TableRow>
               ))}
@@ -83,6 +97,7 @@ const Dashbord = () => {
       <section className="Dashboard-container">
         <Heading type="h2" text="My Times" />
         {handleDisplay()}
+        <Time open={openModal} funcHandler={modalButton} taskID={task} />
       </section>
     </>
   );
